@@ -15,7 +15,7 @@ public class Nave4 {
 	
 	private boolean destruida = false;
 	private float aceleracion = (float) 0.4;
-	private float frenado = (float) 0.2;
+	private float frenado = (float) 0.25;
     private int vidas = 3;
     private float xVel = 0;
     private float yVel = 0;
