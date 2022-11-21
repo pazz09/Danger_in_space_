@@ -14,6 +14,8 @@ import com.badlogic.gdx.math.MathUtils;
 public class Nave4 {
 	
 	private boolean destruida = false;
+	private float aceleracion = (float) 0.4;
+	private float frenado = (float) 0.2;
     private int vidas = 3;
     private float xVel = 0;
     private float yVel = 0;
@@ -32,18 +34,38 @@ public class Nave4 {
     	spr = new Sprite(tx);
     	spr.setPosition(x, y);
     	//spr.setOriginCenter();
-    	spr.setBounds(x, y, 45, 45);
+    	spr.setBounds(x, y, 80, 80);
 
     }
     public void draw(SpriteBatch batch, PantallaJuego juego){
         float x =  spr.getX();
         float y =  spr.getY();
+        
         if (!herido) {
 	        // que se mueva con teclado
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) xVel--;
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) xVel++;
-        	if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) yVel--;     
-	        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) yVel++;
+	        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+	        	xVel-=aceleracion;
+	        }
+	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+	        	xVel+=aceleracion;
+	        }
+        	if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+        		yVel-=aceleracion;     
+        	}
+	        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+	        	yVel+=aceleracion;
+	        }
+	        
+	        //poner aqui si no funciona
+	        if (xVel!=0 && xVel < 0) {
+        		xVel = (float) (xVel + frenado);
+        	}if (xVel!=0 && xVel > 0) {
+        		xVel = (float) (xVel - frenado);
+        	}if (yVel != 0 && yVel < 0){
+    			yVel = (float) (yVel + frenado);
+    		}if (yVel != 0 && yVel > 0) {
+    			yVel = (float) (yVel - frenado);
+    		}
         	
 	     /*   if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) spr.setRotation(++rotacion);
 	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) spr.setRotation(--rotacion);
