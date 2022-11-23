@@ -40,7 +40,7 @@ public class enemy {
 
         if (x+getXSpeed() < 0 || x+getXSpeed()+spr.getWidth() > Gdx.graphics.getWidth())
         	setXSpeed(getXSpeed() * -1);
-        if (y+getySpeed() < 0 || y+getySpeed()+spr.getHeight() > Gdx.graphics.getHeight())
+        if (y+getySpeed() < 150 || y+getySpeed()+spr.getHeight() > Gdx.graphics.getHeight())
         	setySpeed(getySpeed() * -1);
         spr.setPosition(x, y);
     }
