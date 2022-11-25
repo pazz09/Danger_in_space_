@@ -26,7 +26,6 @@ public class Nave4 {
     private boolean herido = false;
     private int tiempoHeridoMax=50;
     private int tiempoHerido;
-    
     public Nave4(int x, int y, Texture tx, Sound soundChoque, Texture txBala, Sound soundBala) {
     	sonidoHerido = soundChoque;
     	this.soundBala = soundBala;
@@ -134,6 +133,8 @@ public class Nave4 {
         }
         return false;
     }
+    
+    
     public boolean checkCollisione(enemy b) {
         if(!herido && b.getArea().overlaps(spr.getBoundingRectangle())){
         	// rebote

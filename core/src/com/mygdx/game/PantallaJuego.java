@@ -78,11 +78,11 @@ public class PantallaJuego implements Screen {
 	  	    balls1.add(bb);
 	  	    balls2.add(bb);
 	  	}
-	    
+	    //crea enemigo
 	    Random e = new Random();
 	    for (int i = 0; i < cantEnemy; i++) {
 	        enemy bb = new enemy(e.nextInt((int)Gdx.graphics.getWidth()),
-	  	            80+e.nextInt((int)Gdx.graphics.getHeight()-80),
+	  	            150+e.nextInt((int)Gdx.graphics.getHeight()-80),
 	  	            50+e.nextInt(10), velXAsteroides+r.nextInt(4), velYAsteroides+r.nextInt(4), 
 	  	            new Texture(Gdx.files.internal("enemy1.png")),new Texture(Gdx.files.internal("bala.png")));	   
 	  	    enemy1.add(bb);
@@ -133,8 +133,8 @@ public class PantallaJuego implements Screen {
 		            for (int j = 0; j < enemy1.size(); j++) {    
 		              if (b.checkCollision(enemy1.get(j))) {          
 		            	 explosionSound.play();
-		            	 balls1.remove(j);
-		            	 balls2.remove(j);
+		            	 enemy1.remove(j);
+		            	 enemy2.remove(j);
 		            	 j--;
 		            	 score +=10;
 		              }   	  
@@ -214,8 +214,8 @@ public class PantallaJuego implements Screen {
 	      batch.end();
 	      //nivel completado
 	      if (balls1.size() == 0 && enemy1.size() == 0) {
-			Screen ss = new PantallaJuego(game,ronda+1, nave.getVidas(), score, 
-					velXAsteroides+3, velYAsteroides+3, cantAsteroides+10,cantEnemy+10);
+			Screen ss = new PantallaJuego(game,ronda+1, nave.getVidas()+1, score, 
+					velXAsteroides+3, velYAsteroides+3, cantAsteroides+3,cantEnemy+2);
 			ss.resize(1200, 800);
 			game.setScreen(ss);
 			dispose();

@@ -33,7 +33,7 @@ public class Bullet {
 	    public void draw(SpriteBatch batch) {
 	    	spr.draw(batch);
 	    }
-	    
+	   
 	    public boolean checkCollision(Ball2 b2) {
 	        if(spr.getBoundingRectangle().overlaps(b2.getArea())){
 	        	// Se destruyen ambos
@@ -43,6 +43,7 @@ public class Bullet {
 	        }
 	        return false;
 	    }
+	    
 	    public boolean checkCollision(enemy b2) {
 	        if(spr.getBoundingRectangle().overlaps(b2.getArea())){
 	        	// Se destruyen ambos

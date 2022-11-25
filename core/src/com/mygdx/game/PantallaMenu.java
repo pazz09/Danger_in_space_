@@ -22,7 +22,7 @@ public class PantallaMenu implements Screen {
         
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1200, 800);
-		texture = new Texture(Gdx.files.internal("fondo3.jpg"));
+		texture = new Texture(Gdx.files.internal("fondofinal(1).jpeg"));
 	}
 
 	@Override
@@ -40,8 +40,8 @@ public class PantallaMenu implements Screen {
 		game.getBatch().setProjectionMatrix(camera.combined);
 
 		game.getBatch().begin();
-		game.getFont().draw(game.getBatch(), "  DANGER IN SPACE   ", 450, 400);
-		game.getFont().draw(game.getBatch(), "-> INICIAR <- ", 515, 300);
+		game.getFont().draw(game.getBatch(), "  DANGER IN SPACE   ", 450, 400-120);
+		game.getFont().draw(game.getBatch(), "-> INICIAR <- ", 515, 300-140);
 	
 		game.getBatch().end();
 
