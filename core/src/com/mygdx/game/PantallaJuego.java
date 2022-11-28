@@ -23,7 +23,10 @@ public class PantallaJuego implements Screen {
 	private int score;
 	private int ronda;
 	private int velXAsteroides; 
-	private int velYAsteroides; 
+	private int velYAsteroides;
+	private int velXEnemy; 
+	private int velYEnemy; 
+
 	private int cantAsteroides;
 	private int cantEnemy;
 	private Texture texture;
@@ -37,10 +40,13 @@ public class PantallaJuego implements Screen {
 
 
 	public PantallaJuego(SpaceNavigation game, int ronda, int vidas, int score,  
-			int velXAsteroides, int velYAsteroides, int cantAsteroides,int cantEnemy) {
+			int velXAsteroides, int velYAsteroides,int velXEnemy, int velYEnemy,
+			int cantAsteroides,int cantEnemy) {
 		this.game = game;
 		this.ronda = ronda;
 		this.score = score;
+		this.velXEnemy=velXEnemy;
+		this.velYEnemy=velYEnemy;
 		this.velXAsteroides = velXAsteroides;
 		this.velYAsteroides = velYAsteroides;
 		this.cantAsteroides = cantAsteroides;
@@ -78,12 +84,13 @@ public class PantallaJuego implements Screen {
 	  	    balls1.add(bb);
 	  	    balls2.add(bb);
 	  	}
+	    
 	    //crea enemigo
 	    Random e = new Random();
 	    for (int i = 0; i < cantEnemy; i++) {
 	        enemy bb = new enemy(e.nextInt((int)Gdx.graphics.getWidth()),
 	  	            150+e.nextInt((int)Gdx.graphics.getHeight()-80),
-	  	            50+e.nextInt(10), velXAsteroides+r.nextInt(4), velYAsteroides+r.nextInt(4), 
+	  	            50+e.nextInt(10), velXEnemy+r.nextInt(4), velYEnemy+r.nextInt(4), 
 	  	            new Texture(Gdx.files.internal("enemy1.png")),new Texture(Gdx.files.internal("bala.png")));	   
 	  	    enemy1.add(bb);
 	  	    enemy2.add(bb);
@@ -215,7 +222,8 @@ public class PantallaJuego implements Screen {
 	      //nivel completado
 	      if (balls1.size() == 0 && enemy1.size() == 0) {
 			Screen ss = new PantallaJuego(game,ronda+1, nave.getVidas()+1, score, 
-					velXAsteroides+3, velYAsteroides+3, cantAsteroides+3,cantEnemy+2);
+					velXAsteroides+1, velYAsteroides+1,velXEnemy+2,velYEnemy+2, 
+					cantAsteroides+3,cantEnemy+2);
 			ss.resize(1200, 800);
 			game.setScreen(ss);
 			dispose();
