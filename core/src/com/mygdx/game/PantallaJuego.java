@@ -22,13 +22,16 @@ public class PantallaJuego implements Screen {
 	private Music gameMusic;
 	private int score;
 	private int ronda;
-	private int velXAsteroides; 
-	private int velYAsteroides;
+	private int velXAsteroides1; 
+	private int velYAsteroides1;
 	private int velXEnemy; 
 	private int velYEnemy; 
+	private int velXAsteroides2;
+	private int velYAsteroides2;
 
-	private int cantAsteroides;
+	private int cantAsteroides1;
 	private int cantEnemy;
+	private int cantAsteroides2;
 	private Texture texture;
 	
 	private Nave4 nave;
@@ -37,19 +40,24 @@ public class PantallaJuego implements Screen {
 	private  ArrayList<Bullet> balas = new ArrayList<>();
 	private  ArrayList<enemy> enemy1 = new ArrayList<>();
 	private  ArrayList<enemy> enemy2 = new ArrayList<>();
+	private  ArrayList<Ball3> balls3 = new ArrayList<>();
+	private  ArrayList<Ball3> balls4 = new ArrayList<>();
 
 
 	public PantallaJuego(SpaceNavigation game, int ronda, int vidas, int score,  
-			int velXAsteroides, int velYAsteroides,int velXEnemy, int velYEnemy,
-			int cantAsteroides,int cantEnemy) {
+			int velXAsteroides1, int velYAsteroides1,int velXEnemy, int velYEnemy, int velXAsteroides2, int velYAsteroides2,
+			int cantAsteroides1,int cantAsteroides2,int cantEnemy) {
 		this.game = game;
 		this.ronda = ronda;
 		this.score = score;
 		this.velXEnemy=velXEnemy;
 		this.velYEnemy=velYEnemy;
-		this.velXAsteroides = velXAsteroides;
-		this.velYAsteroides = velYAsteroides;
-		this.cantAsteroides = cantAsteroides;
+		this.velXAsteroides1 = velXAsteroides1;
+		this.velYAsteroides1 = velYAsteroides1;
+		this.velXAsteroides2 = velXAsteroides2;
+		this.velYAsteroides2 = velYAsteroides2;
+		this.cantAsteroides1 = cantAsteroides1;
+		this.cantAsteroides2 = cantAsteroides2;
 		this.cantEnemy=cantEnemy;
 		batch = game.getBatch();
 		camera = new OrthographicCamera();	
@@ -74,16 +82,28 @@ public class PantallaJuego implements Screen {
 	    				new Texture(Gdx.files.internal("bala.png")), 
 	    				Gdx.audio.newSound(Gdx.files.internal("guau.mp3"))); 
         nave.setVidas(vidas);
-        //crear asteroides
+        //asteroide pequeño
         Random r = new Random();
-	    for (int i = 0; i < cantAsteroides; i++) {
+	    for (int i = 0; i < cantAsteroides1; i++) {
 	        Ball2 bb = new Ball2(r.nextInt((int)Gdx.graphics.getWidth()),
 	  	            50+r.nextInt((int)Gdx.graphics.getHeight()-50),
-	  	            20+r.nextInt(10), velXAsteroides+r.nextInt(4), velYAsteroides+r.nextInt(4), 
+	  	            20+r.nextInt(10), velXAsteroides1+r.nextInt(4), velYAsteroides1+r.nextInt(4), 
 	  	            new Texture(Gdx.files.internal("roca3.png")));	   
 	  	    balls1.add(bb);
 	  	    balls2.add(bb);
 	  	}
+	    
+	    //asteroide grande
+	    Random a = new Random();
+	    for (int j = 0; j < cantAsteroides2; j++) {
+	        Ball3 aa = new Ball3(a.nextInt((int)Gdx.graphics.getWidth()),
+	  	            50+a.nextInt((int)Gdx.graphics.getHeight()-50),
+	  	            20+a.nextInt(10), velXAsteroides2+a.nextInt(4), velYAsteroides2+a.nextInt(4), 
+	  	            new Texture(Gdx.files.internal("roca3.png")));	   
+	  	    balls3.add(aa);
+	  	    balls4.add(aa);
+	  	}
+	    
 	    
 	    //crea enemigo
 	    Random e = new Random();
@@ -101,7 +121,7 @@ public class PantallaJuego implements Screen {
 		CharSequence str = "Vidas: "+nave.getVidas()+" NIVEL: "+ronda;
 		game.getFont().getData().setScale(2f);		
 		game.getFont().draw(batch, str, 10, 30);
-		game.getFont().draw(batch, "Score:"+this.score, Gdx.graphics.getWidth()-150, 30);
+		game.getFont().draw(batch, "	PUNTAJE:"+this.score, Gdx.graphics.getWidth()-150, 30);
 		game.getFont().draw(batch, "HighScore:"+game.getHighScore(), Gdx.graphics.getWidth()/2-100, 30);
 	}
 	@Override
@@ -134,6 +154,13 @@ public class PantallaJuego implements Screen {
 		                i--; //para no saltarse 1 tras eliminar del arraylist
 		            }
 		      }
+	    	  for(int i = 0; i )
+	    	  
+	    	  
+	    	  
+	    	  
+	    	  
+	    	  
 	    	  for (int i = 0; i < balas.size(); i++) {
 		            Bullet b = balas.get(i);
 		            b.update();
