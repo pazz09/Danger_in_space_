@@ -39,7 +39,7 @@ public class PantallaGameOver implements Screen {
 
 		game.getBatch().begin();
 		game.getFont().draw(game.getBatch(), " ", 120, 400,400,1,true);
-		game.getFont().draw(game.getBatch(), "-> REINICIAR <-", 510, 300-140);
+		game.getFont().draw(game.getBatch(), "-> REINICIAR <-", 487, 300-140);
 	
 		game.getBatch().end();
 
