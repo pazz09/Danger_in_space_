@@ -91,7 +91,7 @@ public class PantallaJuego implements Screen {
 	}
     
 	public void dibujaEncabezado() {
-		CharSequence str = "Vidas: "+nave.getVidas()+" Ronda: "+ronda;
+		CharSequence str = "Vidas: "+nave.getVidas()+" NIVEL: "+ronda;
 		game.getFont().getData().setScale(2f);		
 		game.getFont().draw(batch, str, 10, 30);
 		game.getFont().draw(batch, "Score:"+this.score, Gdx.graphics.getWidth()-150, 30);

@@ -1,5 +1,5 @@
 package com.mygdx.game;
-// wena chiquillos estamos probando si la ea de giyhub funciona
+
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
