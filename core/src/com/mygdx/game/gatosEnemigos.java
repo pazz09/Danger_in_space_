@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class gatosEnemigos extends enemigos {
+public class gatosEnemigos extends enemigos implements Enemybuilder {
 	private int x;
     private int y;
     private int xSpeed;

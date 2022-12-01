@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class asteroid extends enemigos {
+public class asteroid extends enemigos implements  Enemybuilder{
 	private int x;
     private int y;
     private int xSpeed;
