@@ -27,6 +27,7 @@ public class PantallaJuego implements Screen {
 	private int velXEnemy; 
 	private int velYEnemy; 
 
+	
 
 	private int cantAsteroides;
 	private int cantEnemy;
@@ -105,7 +106,7 @@ public class PantallaJuego implements Screen {
 		CharSequence str = "Vidas: "+nave.getVidas()+" NIVEL: "+ronda;
 		game.getFont().getData().setScale(2f);		
 		game.getFont().draw(batch, str, 10, 30);
-		game.getFont().draw(batch, "	PUNTAJE:"+this.score, Gdx.graphics.getWidth()-150, 30);
+		game.getFont().draw(batch, "PUNTAJE:"+this.score, Gdx.graphics.getWidth()-210, 30);
 		game.getFont().draw(batch, "HighScore:"+game.getHighScore(), Gdx.graphics.getWidth()/2-100, 30);
 	}
 	@Override
@@ -152,7 +153,7 @@ public class PantallaJuego implements Screen {
 		            	 enemy1.remove(j);
 		            	 enemy2.remove(j);
 		            	 j--;
-		            	 score +=10;
+		            	 score +=20;
 		              }   	  
 		  	        }
 		                
