@@ -1,22 +1,24 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Ball3 {
-	
+public class gatosEnemigos extends enemigos {
 	private int x;
     private int y;
     private int xSpeed;
     private int ySpeed;
     private Sprite spr;
+    private Texture txBala;
 
-    public Ball3(int x, int y, int size, int xSpeed, int ySpeed, Texture tx) {
+    public gatosEnemigos(int x, int y, int size, int xSpeed, int ySpeed, Texture tx, Texture txBala) {
     	spr = new Sprite(tx);
     	this.x = x; 
+    	this.txBala = txBala;
  	
         //validar que borde de esfera no quede fuera
     	if (x-size < 0) this.x = x+size;
@@ -31,25 +33,16 @@ public class Ball3 {
         this.setXSpeed(xSpeed);
         this.setySpeed(ySpeed);
     }
-    public void update() {
-        x += getXSpeed();
-        y += getySpeed();
-
-        if (x+getXSpeed() < 0 || x+getXSpeed()+spr.getWidth() > Gdx.graphics.getWidth())
-        	setXSpeed(getXSpeed() * -1);
-        if (y+getySpeed() < 0 || y+getySpeed()+spr.getHeight() > Gdx.graphics.getHeight())
-        	setySpeed(getySpeed() * -1);
-        spr.setPosition(x, y);
-    }
-    
-    public Rectangle getArea() {
-    	return spr.getBoundingRectangle();
-    }
-    public void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch,PantallaJuego juego) {
     	spr.draw(batch);
+    	if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {         
+            Bullet  bala = new Bullet(spr.getX()+spr.getWidth()/2-5,spr.getY()+ spr.getHeight()-5,0,3,txBala);
+            juego.agregarBala(bala);
+  	      	
+         }
     }
     
-    public void checkCollision(Ball3 b2) {
+    public void checkCollision(gatosEnemigos b2) {
         if(spr.getBoundingRectangle().overlaps(b2.spr.getBoundingRectangle())){
         	// rebote
             if (getXSpeed() ==0) setXSpeed(getXSpeed() + b2.getXSpeed()/2);
@@ -63,18 +56,50 @@ public class Ball3 {
             b2.setySpeed(- b2.getySpeed()); 
         }
     }
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		x += getXSpeed();
+        y += getySpeed();
+
+        if (x+getXSpeed() < 0 || x+getXSpeed()+spr.getWidth() > Gdx.graphics.getWidth())
+        	setXSpeed(getXSpeed() * -1);
+        if (y+getySpeed() < 0 || y+getySpeed()+spr.getHeight() > Gdx.graphics.getHeight())
+        	setySpeed(getySpeed() * -1);
+        spr.setPosition(x, y);
+	}
+
+	@Override
+	public Rectangle getArea() {
+		// TODO Auto-generated method stub
+		return spr.getBoundingRectangle();
+	}
+
+	
+	
+
+	@Override
 	public int getXSpeed() {
+		// TODO Auto-generated method stub
 		return xSpeed;
 	}
+
+	@Override
 	public void setXSpeed(int xSpeed) {
+		// TODO Auto-generated method stub
 		this.xSpeed = xSpeed;
 	}
+
+	@Override
 	public int getySpeed() {
+		// TODO Auto-generated method stub
 		return ySpeed;
 	}
+
+	@Override
 	public void setySpeed(int ySpeed) {
+		// TODO Auto-generated method stub
 		this.ySpeed = ySpeed;
 	}
-	
 
 }

@@ -105,7 +105,7 @@ public class Nave4 {
        
     }
       
-    public boolean checkCollision(Ball2 b) {
+    public boolean checkCollision(asteroid b) {
         if(!herido && b.getArea().overlaps(spr.getBoundingRectangle())){
         	// rebote
             if (xVel ==0) xVel += b.getXSpeed()/2;
@@ -135,7 +135,7 @@ public class Nave4 {
     }
     
     
-    public boolean checkCollisione(enemy b) {
+    public boolean checkCollisione(gatosEnemigos b) {
         if(!herido && b.getArea().overlaps(spr.getBoundingRectangle())){
         	// rebote
             if (xVel ==0) xVel += b.getXSpeed()/2;
