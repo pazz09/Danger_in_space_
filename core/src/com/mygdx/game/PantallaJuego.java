@@ -64,7 +64,7 @@ public class PantallaJuego implements Screen {
 		batch = game.getBatch();
 		camera = new OrthographicCamera();	
 		camera.setToOrtho(false, 800, 640);
-		
+		texture = new Texture(Gdx.files.internal("fondoG.jpg"));
 		
 		
 		
@@ -123,7 +123,7 @@ public class PantallaJuego implements Screen {
 		
 		  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
           batch.begin();
-          
+          game.getBatch().draw(texture, 0, 0, texture.getWidth(), texture.getHeight());
           
           
 		  dibujaEncabezado();
