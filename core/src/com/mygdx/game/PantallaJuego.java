@@ -72,7 +72,7 @@ public class PantallaJuego implements Screen {
 		
 		explosionSound = Gdx.audio.newSound(Gdx.files.internal("explosion.ogg"));
 		explosionSound.setVolume(1,0.5f);
-		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("star-wars-clone-army-theme.mp3")); //
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("cantina-band.mp3")); //
 		
 		gameMusic.setLooping(true);
 		gameMusic.setVolume(0.5f);
