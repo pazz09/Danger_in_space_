@@ -14,12 +14,14 @@ public class gatosEnemigos extends enemigos implements Enemybuilder {
     private int ySpeed;
     private Sprite spr;
     private Texture txBala;
+    private long tiempo, tiempoFinal;
 
     public gatosEnemigos(int x, int y, int size, int xSpeed, int ySpeed, Texture tx, Texture txBala) {
     	spr = new Sprite(tx);
     	this.x = x; 
     	this.txBala = txBala;
- 	
+    	tiempo = 0;
+    	tiempoFinal = System.currentTimeMillis();
         //validar que borde de esfera no quede fuera
     	if (x-size < 0) this.x = x+size;
     	if (x+size > Gdx.graphics.getWidth())this.x = x-size;
@@ -34,11 +36,14 @@ public class gatosEnemigos extends enemigos implements Enemybuilder {
         this.setySpeed(ySpeed);
     }
     public void draw(SpriteBatch batch,PantallaJuego juego) {
+    	tiempo += System.currentTimeMillis()-tiempoFinal;
+    	tiempoFinal = System.currentTimeMillis();
     	spr.draw(batch);
-    	if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {         
+    	if (tiempo >1000) {         
             Bullet  bala = new Bullet(spr.getX()+spr.getWidth()/2-5,spr.getY()+ spr.getHeight()-71,0,-3,txBala);
             juego.agregarBala(bala);
-  	      	
+            
+  	      	tiempo = 0;
          }
     }
     
