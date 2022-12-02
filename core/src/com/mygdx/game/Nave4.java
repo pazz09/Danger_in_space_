@@ -124,7 +124,6 @@ public class Nave4{
 	      juego.agregarBala(bala);
 	      soundBala.play();
 	      tiempoInicial = 0;
-	      System.out.println(tiempoDisparoMax);
         }
        
     }

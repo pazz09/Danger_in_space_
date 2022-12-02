@@ -105,7 +105,7 @@ public class PantallaJuego implements Screen {
 	        gatosEnemigos bb = new gatosEnemigos(e.nextInt((int)Gdx.graphics.getWidth()),
 	  	            150+e.nextInt((int)Gdx.graphics.getHeight()-80),
 	  	            50+e.nextInt(10), velXEnemys+r.nextInt(4), velYEnemys+r.nextInt(4), 
-	  	            new Texture(Gdx.files.internal("enemy1.png")),new Texture(Gdx.files.internal("bala.png")));	   
+	  	            new Texture(Gdx.files.internal("enemy1.png")),new Texture(Gdx.files.internal("balaE.png")));	   
 	  	    enemys1.add(bb);
 	  	    enemys2.add(bb);
 	  	}
