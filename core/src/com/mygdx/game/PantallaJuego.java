@@ -153,6 +153,7 @@ public class PantallaJuego implements Screen {
 	    	  
 	    	  
 	    	  
+	    	  
 	    	  for (int i = 0; i < balas.size(); i++) {
 		            Bullet b = balas.get(i);
 		            b.update();
@@ -204,6 +205,22 @@ public class PantallaJuego implements Screen {
 	      //dibujar balas
 	     for (Bullet b : balas) {       
 	          b.draw(batch);
+	     }
+	         
+	     for (int i = 0; i < balas.size(); i++) {
+	            Bullet b = balas.get(i);
+	            b.update();
+	                
+	              if (b.checkCollision(nave)) {          
+	            	 explosionSound.play();
+	            	 nave.checkCollisione(b);
+	                	  
+	  	        }
+
+	            if (b.isDestroyed()) {
+	                balas.remove(b);
+	                i--; //para no saltarse 1 tras eliminar del arraylist
+	            }
 	      }
 	      nave.draw(batch, this);
 	      //dibujar asteroides y manejar colision con nave
@@ -218,6 +235,7 @@ public class PantallaJuego implements Screen {
 	            	 i--;
               }   	  
   	        }
+	      
 	      for (int i = 0; i < enemys1.size(); i++) {
 	    	    gatosEnemigos b=enemys1.get(i);
 	    	    b.draw(batch,this);

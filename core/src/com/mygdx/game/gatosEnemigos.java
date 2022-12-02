@@ -40,7 +40,7 @@ public class gatosEnemigos extends enemigos implements Enemybuilder {
     	tiempoFinal = System.currentTimeMillis();
     	spr.draw(batch);
     	if (tiempo >1000) {         
-            Bullet  bala = new Bullet(spr.getX()+spr.getWidth()/2-5,spr.getY()+ spr.getHeight()-71,0,-3,txBala);
+            Bullet  bala = new Bullet(spr.getX()+spr.getWidth()/2-5,spr.getY()+ spr.getHeight()-71,0,-3,txBala,false);
             juego.agregarBala(bala);
             
   	      	tiempo = 0;
