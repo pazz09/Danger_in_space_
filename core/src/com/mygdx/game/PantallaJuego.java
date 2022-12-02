@@ -1,3 +1,13 @@
+
+// colecciones
+//balas destruye jugador
+//modificaciones varias de movimiento UwU
+//Singleton
+//Template method
+//Strategy
+//Builder
+
+
 package com.mygdx.game;
 
 import java.util.ArrayList;
@@ -26,13 +36,10 @@ public class PantallaJuego implements Screen {
 	private int velYAsteroides;
 	private int velXEnemys; 
 	private int velYEnemys; 
-
-	
-
 	private int cantAsteroides;
 	private int cantEnemys;
+	private long tiempoDisparo;
 	private Texture texture;
-	
 	private Nave4 nave;
 	private  ArrayList<asteroid> balls1 = new ArrayList<>();
 	private  ArrayList<asteroid> balls2 = new ArrayList<>();
@@ -43,7 +50,7 @@ public class PantallaJuego implements Screen {
 
 	public PantallaJuego(SpaceNavigation game, int ronda, int vidas, int score,  
 			int velXAsteroides, int velYAsteroides,int velXEnemys, int velYEnemys,
-			int cantAsteroides,int cantEnemys) {
+			int cantAsteroides,int cantEnemys, long tiempoDisparo) {
 		this.game = game;
 		this.ronda = ronda;
 		this.score = score;
@@ -53,6 +60,7 @@ public class PantallaJuego implements Screen {
 		this.velYAsteroides = velYAsteroides;
 		this.cantAsteroides = cantAsteroides;
 		this.cantEnemys=cantEnemys;
+		this.tiempoDisparo = tiempoDisparo;
 		batch = game.getBatch();
 		camera = new OrthographicCamera();	
 		camera.setToOrtho(false, 800, 640);
@@ -76,6 +84,7 @@ public class PantallaJuego implements Screen {
 	    				new Texture(Gdx.files.internal("bala.png")), 
 	    				Gdx.audio.newSound(Gdx.files.internal("guau.mp3"))); 
         nave.setVidas(vidas);
+        nave.setTiempoDisparoMax(tiempoDisparo);
         //asteroide pequeño
         Random r = new Random();
 	    for (int i = 0; i < cantAsteroides; i++) {
@@ -231,9 +240,10 @@ public class PantallaJuego implements Screen {
 	      batch.end();
 	      //nivel completado
 	      if (balls1.size() == 0 && enemys1.size() == 0) {
+	    	
 			Screen ss = new PantallaJuego(game,ronda+1, nave.getVidas()+1, score, 
 					velXAsteroides+1, velYAsteroides+1,velXEnemys+2,velYEnemys+2, 
-					cantAsteroides+3,cantEnemys+2);
+					cantAsteroides+3,cantEnemys+2,tiempoDisparo-40);
 			ss.resize(1200, 800);
 			game.setScreen(ss);
 			dispose();

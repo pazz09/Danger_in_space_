@@ -11,10 +11,11 @@ import com.badlogic.gdx.math.MathUtils;
 
 
 
-public class Nave4 {
+public class Nave4{
 	
 	private boolean destruida = false;
-	private float aceleracion = (float) 0.4;
+	private float velMax = 15;
+	private float aceleracion = (float) 0.7;
 	private float frenado = (float) 0.25;
     private int vidas = 3;
     private float xVel = 0;
@@ -26,6 +27,12 @@ public class Nave4 {
     private boolean herido = false;
     private int tiempoHeridoMax=50;
     private int tiempoHerido;
+    private long tiempoInicial = 0, tiempoFinal;
+    private long tiempoDisparoMax;
+     
+    
+    
+    
     public Nave4(int x, int y, Texture tx, Sound soundChoque, Texture txBala, Sound soundBala) {
     	sonidoHerido = soundChoque;
     	this.soundBala = soundBala;
@@ -34,25 +41,39 @@ public class Nave4 {
     	spr.setPosition(x, y);
     	//spr.setOriginCenter();
     	spr.setBounds(x, y, 80, 80);
+    	tiempoInicial = 0;
+    	tiempoFinal = System.currentTimeMillis();
 
     }
     public void draw(SpriteBatch batch, PantallaJuego juego){
         float x =  spr.getX();
         float y =  spr.getY();
-        
+        tiempoInicial += System.currentTimeMillis() - tiempoFinal;
+        tiempoFinal = System.currentTimeMillis();
         if (!herido) {
 	        // que se mueva con teclado
 	        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-	        	xVel-=aceleracion;
+	        	if (xVel > velMax*-1 && xVel<velMax) {
+	        		xVel-=aceleracion;
+	        	}
+	        		
 	        }
 	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-	        	xVel+=aceleracion;
+	        	if (xVel > velMax*-1 && xVel<velMax) {
+	        		xVel+=aceleracion;
+	        	}
+	        	
 	        }
         	if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-        		yVel-=aceleracion;     
+        		if (yVel > velMax*-1 && yVel<velMax) {
+        			yVel-=aceleracion; 
+	        	}
+        		    
         	}
 	        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-	        	yVel+=aceleracion;
+	        	if (yVel > velMax*-1 && yVel<velMax) {
+        			yVel+=aceleracion; 
+	        	}
 	        }
 	        
 	        //poner aqui si no funciona
@@ -97,10 +118,13 @@ public class Nave4 {
  		   if (tiempoHerido<=0) herido = false;
  		 }
         // disparo
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {         
+        
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && tiempoInicial > tiempoDisparoMax) {         
           Bullet  bala = new Bullet(spr.getX()+spr.getWidth()/2-5,spr.getY()+ spr.getHeight()-5,0,3,txBala);
 	      juego.agregarBala(bala);
 	      soundBala.play();
+	      tiempoInicial = 0;
+	      System.out.println(tiempoDisparoMax);
         }
        
     }
@@ -168,6 +192,12 @@ public class Nave4 {
     }
     public boolean estaHerido() {
  	   return herido;
+    }
+    public void setTiempoDisparoMax(long tiempoDisparoMax) {
+    	this.tiempoDisparoMax = tiempoDisparoMax;
+    }
+    public long getTiempoDisparoMax() {
+    	return tiempoDisparoMax;
     }
     
     public int getVidas() {return vidas;}
