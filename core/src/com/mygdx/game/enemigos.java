@@ -8,7 +8,7 @@ public abstract class enemigos {
     public abstract Rectangle getArea();
 
 	public abstract int getXSpeed();
-	public abstract void setXSpeed(int xSpeed);
+	
 	public abstract int getySpeed();
-	public abstract void setySpeed(int ySpeed);
+	
 }
