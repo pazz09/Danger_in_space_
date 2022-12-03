@@ -155,10 +155,6 @@ public class PantallaJuego implements Screen {
 		      }
 	    	  
 	    	  
-	    	  
-	    	  
-	    	  
-	    	  
 	    	  for (int i = 0; i < balas.size(); i++) {
 		            Bullet b = balas.get(i);
 		            b.update();
@@ -170,12 +166,10 @@ public class PantallaJuego implements Screen {
 		            	 j--;
 		            	 score +=20;
 		              }   	  
-		  	        }
-		                
-		         //   b.draw(batch);
+		  	        }   
 		            if (b.isDestroyed()) {
 		                balas.remove(b);
-		                i--; //para no saltarse 1 tras eliminar del arraylist
+		                i--; 
 		            }
 		      }
 		      //actualizar movimiento de asteroides dentro del area
@@ -225,7 +219,7 @@ public class PantallaJuego implements Screen {
 
 	            if (b.isDestroyed()) {
 	                balas.remove(b);
-	                i--; //para no saltarse 1 tras eliminar del arraylist
+	                i--; 
 	            }
 	      }
 	      nave.draw(batch, this);

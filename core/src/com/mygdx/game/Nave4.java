@@ -87,20 +87,6 @@ public class Nave4{
     		}if (yVel != 0 && yVel > 0) {
     			yVel = (float) (yVel - frenado);
     		}
-        	
-	     /*   if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) spr.setRotation(++rotacion);
-	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) spr.setRotation(--rotacion);
-	        
-	        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-	        	xVel -=Math.sin(Math.toRadians(rotacion));
-	        	yVel +=Math.cos(Math.toRadians(rotacion));
-	        	System.out.println(rotacion+" - "+Math.sin(Math.toRadians(rotacion))+" - "+Math.cos(Math.toRadians(rotacion))) ;    
-	        }
-	        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-	        	xVel +=Math.sin(Math.toRadians(rotacion));
-	        	yVel -=Math.cos(Math.toRadians(rotacion));
-	        	     
-	        }*/
 	        
 	        // que se mantenga dentro de los bordes de la ventana
 	        if (x+xVel < 0 || x+xVel+spr.getWidth() > Gdx.graphics.getWidth())
@@ -141,11 +127,7 @@ public class Nave4{
             if (b.getySpeed() ==0) b.setySpeed(b.getySpeed() + (int)yVel/2);
             yVel = - yVel;
             b.setySpeed(- b.getySpeed());
-            // despegar sprites
-      /*      int cont = 0;
-            while (b.getArea().overlaps(spr.getBoundingRectangle()) && cont<xVel) {
-               spr.setX(spr.getX()+Math.signum(xVel));
-            }   */
+            
         	//actualizar vidas y herir
             vidas--;
             herido = true;
@@ -171,11 +153,7 @@ public class Nave4{
             if (b.getySpeed() ==0) b.setySpeed(b.getySpeed() + (int)yVel/2);
             yVel = - yVel;
             b.setySpeed(- b.getySpeed());
-            // despegar sprites
-      /*      int cont = 0;
-            while (b.getArea().overlaps(spr.getBoundingRectangle()) && cont<xVel) {
-               spr.setX(spr.getX()+Math.signum(xVel));
-            }   */
+            
         	//actualizar vidas y herir
             vidas--;
             herido = true;
@@ -199,11 +177,7 @@ public class Nave4{
             if (b.getySpeed() ==0) b.setySpeed(b.getySpeed() + (int)yVel/2);
             yVel = - yVel;
             b.setySpeed(- b.getySpeed());
-            // despegar sprites
-      /*      int cont = 0;
-            while (b.getArea().overlaps(spr.getBoundingRectangle()) && cont<xVel) {
-               spr.setX(spr.getX()+Math.signum(xVel));
-            }   */
+            
         	//actualizar vidas y herir
             vidas--;
             herido = true;
@@ -230,10 +204,10 @@ public class Nave4{
     
     public int getVidas() {return vidas;}
     public Rectangle getArea() {
-		// TODO Auto-generated method stub
+		
 		return spr.getBoundingRectangle();
 	}
-    //public boolean isDestruida() {return destruida;}
+    
     public int getX() {return (int) spr.getX();}
     public int getY() {return (int) spr.getY();}
 	public void setVidas(int vidas2) {vidas = vidas2;}

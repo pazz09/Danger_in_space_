@@ -22,12 +22,12 @@ public class gatosEnemigos extends enemigos implements Enemybuilder {
     	this.txBala = txBala;
     	tiempo = 0;
     	tiempoFinal = System.currentTimeMillis();
-        //validar que borde de esfera no quede fuera
+        
     	if (x-size < 0) this.x = x+size;
     	if (x+size > Gdx.graphics.getWidth())this.x = x-size;
          
         this.y = y;
-        //validar que borde de esfera no quede fuera
+        
     	if (y-size < 0) this.y = y+size;
     	if (y+size > Gdx.graphics.getHeight())this.y = y-size;
     	
