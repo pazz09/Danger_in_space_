@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 
 
-public class Nave4{
+public class Nave{
 	
 	private boolean destruida = false;
 	private float velMax = 15;
@@ -34,7 +34,7 @@ public class Nave4{
     
     
     
-    public Nave4(int x, int y, Texture tx, Sound soundChoque, Texture txBala, Sound soundBala) {
+    public Nave(int x, int y, Texture tx, Sound soundChoque, Texture txBala, Sound soundBala) {
     	sonidoHerido = soundChoque;
     	this.soundBala = soundBala;
     	this.txBala = txBala;

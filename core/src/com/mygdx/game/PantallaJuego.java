@@ -1,13 +1,4 @@
 
-// colecciones
-//balas destruye jugador
-//modificaciones varias de movimiento UwU
-//Singleton
-//Template method
-//Strategy
-//Builder
-
-
 package com.mygdx.game;
 
 import java.util.ArrayList;
@@ -41,7 +32,7 @@ public class PantallaJuego implements Screen {
 	private int cantEnemys;
 	private long tiempoDisparo;
 	private Texture texture;
-	private Nave4 nave;
+	private Nave nave;
 	
 	
 	private  ColeccionAS balls1= new ColeccionAS();
@@ -84,7 +75,7 @@ public class PantallaJuego implements Screen {
 		gameMusic.play();
 		
 	    // cargar imagen de la nave, 64x64   
-	    nave = new Nave4(Gdx.graphics.getWidth()/2-50,30,new Texture(Gdx.files.internal("naveJugador.png")),
+	    nave = new Nave(Gdx.graphics.getWidth()/2-50,30,new Texture(Gdx.files.internal("naveJugador.png")),
 	    				Gdx.audio.newSound(Gdx.files.internal("hurt.ogg")), 
 	    				new Texture(Gdx.files.internal("bala.png")), 
 	    				Gdx.audio.newSound(Gdx.files.internal("guau.mp3"))); 

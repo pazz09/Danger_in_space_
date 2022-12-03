@@ -56,7 +56,7 @@ public class Bullet extends enemigos implements Enemybuilder{
 	        }
 	        return false;
 	    }
-	    public boolean checkCollision(Nave4 b2) {
+	    public boolean checkCollision(Nave b2) {
 	        if(spr.getBoundingRectangle().overlaps(b2.getArea())&& Nave==false){
 	        	// Se destruyen ambos
 	            this.destroyed = true;
