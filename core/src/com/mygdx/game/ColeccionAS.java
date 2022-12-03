@@ -3,12 +3,12 @@ package com.mygdx.game;
 
 import java.util.*;
 
-public class Coleccion {
+public class ColeccionAS implements Coleccionbuilder {
 
 	
 	private ArrayList<asteroid> lista;
 	
-	public Coleccion() {
+	public ColeccionAS() {
 		this.lista = new ArrayList<>();
 	}
 	
@@ -19,14 +19,19 @@ public class Coleccion {
 	public asteroid get(int i) {
 		return this.lista.get(i);
 	}
-	
+
+	@Override
 	public int size() {
+		// TODO Auto-generated method stub
 		return this.lista.size();
 	}
-	
+
+	@Override
 	public void remove(int i) {
+		// TODO Auto-generated method stub
 		this.lista.remove(i);
 	}
+	
 	
 	
 }

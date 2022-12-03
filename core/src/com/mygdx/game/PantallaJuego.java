@@ -44,11 +44,11 @@ public class PantallaJuego implements Screen {
 	private Nave4 nave;
 	
 	
-	private  ArrayList<asteroid>balls1 = new ArrayList<>();
-	private  ArrayList<asteroid> balls2 = new ArrayList<>();
-	private  ArrayList<Bullet> balas = new ArrayList<>();
-	private  ArrayList<gatosEnemigos> enemys1 = new ArrayList<>();
-	private  ArrayList<gatosEnemigos> enemys2 = new ArrayList<>();
+	private  ColeccionAS balls1= new ColeccionAS();
+	private  ColeccionAS balls2= new ColeccionAS();
+	private  ColeccionBalas balas = new ColeccionBalas();
+	private  ColeccionGatos enemys1 = new ColeccionGatos();
+	private  ColeccionGatos enemys2 = new ColeccionGatos();
 
 
 	public PantallaJuego(SpaceNavigation game, int ronda, int vidas, int score,  
@@ -179,11 +179,11 @@ public class PantallaJuego implements Screen {
 		            }
 		      }
 		      //actualizar movimiento de asteroides dentro del area
-		      for (asteroid ball : balls1) {
-		          ball.update();
+		      for (int i=0;i<balls1.size();i++) {
+		    	  balls1.get(i).update();
 		      }
-		      for (gatosEnemigos enmy3 : enemys1) {
-			          enmy3.update();
+		      for (int i=0;i<enemys1.size();i++) {
+		    	  enemys1.get(i).update();
 		      }
 		      //colisiones entre asteroides y sus rebotes  
 		      for (int i=0;i<balls1.size();i++) {
@@ -208,9 +208,10 @@ public class PantallaJuego implements Screen {
 			      }
 	      }
 	      //dibujar balas
-	     for (Bullet b : balas) {       
-	          b.draw(batch);
-	     }
+	     
+	     for (int i=0;i<balas.size();i++) {
+	    	  balas.get(i).draw(batch);
+	      }
 	         
 	     for (int i = 0; i < balas.size(); i++) {
 	            Bullet b = balas.get(i);
