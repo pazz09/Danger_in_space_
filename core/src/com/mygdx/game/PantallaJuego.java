@@ -42,7 +42,9 @@ public class PantallaJuego implements Screen {
 	private long tiempoDisparo;
 	private Texture texture;
 	private Nave4 nave;
-	private  ArrayList<asteroid> balls1 = new ArrayList<>();
+	
+	
+	private  ArrayList<asteroid>balls1 = new ArrayList<>();
 	private  ArrayList<asteroid> balls2 = new ArrayList<>();
 	private  ArrayList<Bullet> balas = new ArrayList<>();
 	private  ArrayList<gatosEnemigos> enemys1 = new ArrayList<>();
@@ -61,7 +63,7 @@ public class PantallaJuego implements Screen {
 		this.velYAsteroides = velYAsteroides;
 		this.cantAsteroides = cantAsteroides;
 		this.cantEnemys=cantEnemys;
-		this.tiempoDisparo = tiempoDisparo;
+		this.tiempoDisparo = tiempoDisparo; 
 		batch = game.getBatch();
 		camera = new OrthographicCamera();	
 		camera.setToOrtho(false, 800, 640);
