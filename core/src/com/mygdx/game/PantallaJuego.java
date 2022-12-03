@@ -29,6 +29,7 @@ public class PantallaJuego implements Screen {
 	private OrthographicCamera camera;	
 	private SpriteBatch batch;
 	private Sound explosionSound;
+	private Sound meoaw;
 	private Music gameMusic;
 	private int score;
 	private int ronda;
@@ -71,7 +72,9 @@ public class PantallaJuego implements Screen {
 		//inicializar assets; musica de fondo y efectos de sonido
 		
 		explosionSound = Gdx.audio.newSound(Gdx.files.internal("explosion.ogg"));
-		explosionSound.setVolume(1,0.5f);
+		
+		meoaw=Gdx.audio.newSound(Gdx.files.internal("meow.mp3"));
+		
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("cantina-band.mp3")); //
 		
 		gameMusic.setLooping(true);
@@ -159,7 +162,7 @@ public class PantallaJuego implements Screen {
 		            b.update();
 		            for (int j = 0; j < enemys1.size(); j++) {    
 		              if (b.checkCollision(enemys1.get(j))) {          
-		            	 explosionSound.play();
+		            	 meoaw.play();
 		            	 enemys1.remove(j);
 		            	 enemys2.remove(j);
 		            	 j--;
